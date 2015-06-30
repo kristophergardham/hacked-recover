@@ -1,0 +1,21 @@
+<?php
+ /* $pp = shell_exec(" find ./ \( -perm -o+w \) \
+   -type f \
+   -exec ls -la {} \;");
+echo $pp;
+echo "find 777 done";
+$pp2 = shell_exec("find ./ \( -perm -o+w \) \
+   -type d \
+   -exec ls -lad {} \;");
+echo "find 777 dir done";
+echo $pp2;
+*/
+
+$pp3 = shell_exec("find $SRCH \( -perm -4000 \) \
+   -type f \
+   -exec file {} \; \
+   -exec ls -la {} \;");
+echo $pp3;
+echo "suid";
+
+?>

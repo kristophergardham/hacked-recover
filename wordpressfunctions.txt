@@ -1,0 +1,23 @@
+/************* KRISTOPHER KRISTOPHER
+*  remove wordpress version number to protect
+*  against exploits on old wordpress version 
+**************************************/
+
+function wpbeginner_remove_version() {
+return '';
+}
+add_filter('the_generator', 'wpbeginner_remove_version');
+
+/* remove wordpress version number from appending to enque scripts
+* again to protect against hacks against this terribly old version of wordpress
+* this is not a great solution, but it'll do */
+
+function remove_kristophercssjs_ver( $src ) {
+    if( strpos( $src, '?ver=' ) )
+        $src = remove_query_arg( 'ver', $src );
+    return $src;
+}
+add_filter( 'style_loader_src', 'remove_kristophercssjs_ver', 10, 2 );
+add_filter( 'script_loader_src', 'remove_kristophercssjs_ver', 10, 2 );
+
+/* end kristopher kristopher kristopher */
